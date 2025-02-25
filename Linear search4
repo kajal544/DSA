@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+int linearSearchRecursive(int arr[], int size, int target, int index = 0) {
+    if (index == size) {
+        return -1; // Element not found
+    }
+    if (arr[index] == target) {
+        return index; // Element found at index
+    }
+    return linearSearchRecursive(arr, size, target, index + 1);
+}
+
+int main() {
+    int arr[] = {5, 3, 8, 6, 7};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int target = 6;
+    int result = linearSearchRecursive(arr, size, target);
+    cout << (result != -1 ? "Element found at index " + to_string(result) : "Element not found") << endl;
+    return 0;
+}
