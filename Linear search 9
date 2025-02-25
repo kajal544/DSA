@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+struct Compare {
+    int target;
+    Compare(int t) : target(t) {}
+    bool operator()(int element) const {
+        return element == target;
+    }
+};
+
+int linearSearch(const vector<int>& vec, int target) {
+    auto it = find_if(vec.begin(), vec.end(), Compare(target));
+    if (it != vec.end()) {
+        return distance(vec.begin(), it); // Element found at index
+    }
+    return -1; // Element not found
+}
+
+int main() {
+    vector<int> vec = {5, 3, 8, 6, 7};
+    int target = 6;
+    int result = linearSearch(vec, target);
+    cout << (result != -1 ? "Element found at index " + to_string(result) : "Element not found") << endl;
+    return 0;
+}
