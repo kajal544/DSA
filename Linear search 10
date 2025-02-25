@@ -1,0 +1,21 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+template <typename Iterator, typename T>
+Iterator linearSearch(Iterator begin, Iterator end, const T& target) {
+    return find(begin, end, target);
+}
+
+int main() {
+    vector<int> vec = {5, 3, 8, 6, 7};
+    int target = 6;
+    auto it = linearSearch(vec.begin(), vec.end(), target);
+    if (it != vec.end()) {
+        cout << "Element found at index " << distance(vec.begin(), it) << endl;
+    } else {
+        cout << "Element not found" << endl;
+    }
+    return 0;
+}
