@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+int compare(int a, int b) {
+    return a - b;
+}
+
+int linearSearch(int arr[], int size, int (*compare)(int, int), int target) {
+    for (int i = 0; i < size; ++i) {
+        if (compare(arr[i], target) == 0) {
+            return i; // Element found at index i
+        }
+    }
+    return -1; // Element not found
+}
+
+int main() {
+    int arr[] = {5, 3, 8, 6, 7};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int target = 6;
+    int result = linearSearch(arr, size, compare, target);
+    cout << (result != -1 ? "Element found at index " + to_string(result) : "Element not found") << endl;
+    return 0;
+}
