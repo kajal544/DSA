@@ -1,0 +1,22 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int linearSearch(const vector<int>& vec, int target) {
+    int index = 0;
+    for (const auto& element : vec) {
+        if (element == target) {
+            return index; // Element found at index
+        }
+        ++index;
+    }
+    return -1; // Element not found
+}
+
+int main() {
+    vector<int> vec = {5, 3, 8, 6, 7};
+    int target = 6;
+    int result = linearSearch(vec, target);
+    cout << (result != -1 ? "Element found at index " + to_string(result) : "Element not found") << endl;
+    return 0;
+}
